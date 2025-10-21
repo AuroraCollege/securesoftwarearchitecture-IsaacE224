@@ -3,11 +3,10 @@
   "hostRequirements": {
     "cpus": 4
   },
-  "waitFor": "postCreateCommand",
-  "updateContentCommand": "pip install -r requirements.txt",
-  "postCreateCommand": "",
+  "waitFor": "onCreateCommand",
+  "postCreateCommand": "pip install -r requirements.txt",
   "postAttachCommand": {
-    "server": "flask --debug run"
+    "server": "flask --app StarterApp/app.py --debug run"
   },
   "portsAttributes": {
     "5000": {
