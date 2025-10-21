@@ -1,9 +1,3 @@
-# GitHub Codespaces - Flask
+# GitHub Codespaces - Secure
 
-Welcome to your shiny new Codespace running Flask! We've got everything fired up and running for you to explore Flask.
-
-To run the application:
-
-```
-flask --debug run
-```
+Welcome to your shiny new Codespace running Flask! This will be a useful spot to start learning some of the tools for Secure Software Architecture.

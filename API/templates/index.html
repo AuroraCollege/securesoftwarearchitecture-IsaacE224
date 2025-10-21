@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Fruit List</title>
+</head>
+<body>
+    <h1>Fruit List</h1>
+    <ul>
+        {% for fruit in fruits %}
+            <li>ID: {{ fruit.id }} - Name: {{ fruit.name }}
+                <a href=""
+            </li>
+        {% else %}
+            <li>No fruits found.</li>
+        {% endfor %}
+    </ul>
+
+
+     <h2>Add a Fruit</h2>
+    <form id="fruitForm">
+        <label for="name">Fruit Name:</label>
+        <input type="text" id="name" name="name" required />
+        <button type="submit">Add</button>
+    </form>
+
+    <script>
+    document.getElementById('fruitForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const fruitName = document.getElementById('name').value.trim();
+        if (!fruitName) return alert('Please enter a fruit name');
+
+        fetch('/fruits', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',  // JSON header
+            },
+            body: JSON.stringify({ name: fruitName })  // JSON payload
+        })
+        .then(response => {
+            if (!response.ok) return response.json().then(err => {throw new Error(err.message || 'Unknown error')});
+            return response.json();
+        })
+        .then(data => {
+            alert(`Added fruit: ID ${data.id}, Name: ${data.name}`);
+            window.location.reload();
+        })
+        .catch(error => alert('Error: ' + error.message));
+    });
+    </script>
+</body>
+</html>

@@ -4,9 +4,11 @@
     "cpus": 4
   },
   "waitFor": "onCreateCommand",
-  "postCreateCommand": "pip install -r requirements.txt",
+  "postCreateCommand": {
+    "server": "pip install -r requirements.txt"
+  },
   "postAttachCommand": {
-    "server": "flask --app StarterApp/app.py --debug run"
+    "server": "flask --app starter_app/app.py --debug run"
   },
   "portsAttributes": {
     "5000": {
